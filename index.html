@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tirgul</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+  <style>
+.slot_number{
+    border: 4px solid red;
+    border-radius: 3px;
+    display: inline-block;
+    padding: 20px;
+    font-size: 20px;
+    margin: 20px;
+
+}
+
+  </style>
+  </head>
+
+  <body>
+    <div id="App"></div>
+
+    <script type="text/babel">
+
+    function SlotNumber(props){
+        console.log(props);
+        return <div className="slot_number">
+            {props.num}
+            </div>
+    }
+    class SlotMachine extends React.Component  {
+        constructor(){
+            super();
+            this.state={first:1 , second:2 , third:3}
+        }
+        render(){
+
+            return  <div>
+            <h1>SLOT MACHINE</h1>
+           <SlotNumber num={this.state.first}/>
+           <SlotNumber num={this.state.second}/>
+           <SlotNumber num={this.state.third}/>
+           
+            <button onClick = {()=>{
+                const random =(Math.floor(Math.random()*10));
+                const random2 =(Math.floor(Math.random()*10));
+                const random3 =(Math.floor(Math.random()*10));
+
+
+                this.setState({first:random,second:random2,third:random3})
+                
+            }}>Run!</button>
+          </div>
+        }
+         
+      }
+
+      ReactDOM.render(<SlotMachine />, App);
+    </script>
+  </body>
+</html>
